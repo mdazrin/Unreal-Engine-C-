@@ -1,0 +1,22 @@
+To apply force to an object
+
+1. Need a direction of the force (vector)
+2. Actor or Object
+
+Actor.h
+
+Declare a vector
+FVector ForceToAdd = FVector(0,0,5000) // object will move 5000 units per sec towards z direction
+
+Actor.cpp
+
+Implement the function
+
+&Object->AddForce(ForceToAdd * (&Object->GetMass())
+
+
+While for impulse (burst force)
+
+Actor.cpp
+
+&Object->AddImpulse(ForceToAdd * (&Object->GetMass())
