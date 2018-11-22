@@ -1,0 +1,14 @@
+Timer need a few parameters
+
+1. FTimerHandle object
+2. this
+3. Address of function that will be fired
+4. Total time/Loop time
+5. bool
+
+Write this under BeginPlay
+
+
+GetWorld()->GetTimerManager().SetTimer(1,2,3,4,5);
+
+Save and compile
