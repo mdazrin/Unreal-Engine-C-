@@ -1,0 +1,43 @@
+Interface class
+.h
+#include "CoreMinimal.h"
+#include "MyInterface.generated.h"
+
+// This class does not need to be modified.
+UINTERFACE(MinimalAPI)
+class UMyInterface : public UInterface
+{
+	GENERATED_BODY()
+};
+
+class MYTUTORIAL_API IMyInterface
+{
+	GENERATED_BODY()
+
+	virtual void MyFunction();
+public:
+	
+};
+
+
+Choose desired class, example Actor class
+
+Actor.h
+#include "MyInterface.h"
+class MYTUTORIAL_API AMyActor : public AActor, public IMyInterface
+
+/*override function we borrow from interface class*/
+virtual void MyFunction() override;
+
+Actor.cpp
+
+/* write function implementation*/
+void AMyActor::MyFunction()
+{
+	GLog->Log("Hello World");
+}
+
+
+
+
+
