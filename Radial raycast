@@ -1,0 +1,23 @@
+To perform radial raycast we needs few parameters
+
+1. Array of HitResult
+2. Origin location
+3. End location
+4. 3D rotation (since in radial)
+5. Collision channel
+6. Shape we want our trace to be
+
+Origin = GetActorLocation()
+End location.z += SphereHeight()
+
+After that, switch to cpp file and under BeginPlay()
+
+GetWorld()->SweepMultiByChannel(1,2,3,4,5,6);
+
+if (true)
+{
+  iterate array 
+  get information of the objects
+  
+  }
+
