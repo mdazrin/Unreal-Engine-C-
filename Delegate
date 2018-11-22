@@ -1,0 +1,91 @@
+Create any class, example Actor class
+
+Actor.h
+
+/*Declare delegate
+
+Single cast delegate, no parameters*/
+	DECLARE_DELEGATE(MyDelegate);
+
+	/*Single cast delegate, one parameter*/
+	DECLARE_DELEGATE_OneParam(MyIntDelegate, int32);
+
+	/*Multicast delegate, one parameter*/
+	DECLARE_MULTICAST_DELEGATE_OneParam(MyIntMulticastDelegate, int32);
+
+/*Declare function
+
+Function with parameter int32*/
+	UFUNCTION()
+		void IntFunction(int32 x);
+
+	/*Function with parameter int32*/
+	UFUNCTION()
+		void SecondIntFunction(int32 x);
+
+	/*Function with parameter int32*/
+	UFUNCTION()
+		void ThirdIntFunction(int32 x);
+
+	/*Function with no parameter*/
+	UFUNCTION()
+		void SomeFunction();
+    
+Actor.cpp
+
+/*Write the function implementation
+Under BeginPlay*/
+
+
+/*Declaring a delegate of MyDelegate type*/
+	MyDelegate MyDel;
+
+	/*Bind the UFUNCTION to MyDel, this will not call the function just yet*/
+	MyDel.BindUFunction(this, FName("SomeFunction"));
+
+	/*Calling the bound function of the delegate*/
+	MyDel.Execute();
+
+	/*Declaring a delegate of MyIntDelegate type*/
+	MyIntDelegate MyIntDel;
+
+	/*Bind two UFUNCTION to MyIntDel, this will not call the function just yet*/
+	MyIntDel.BindUFunction(this, FName("IntFunction"));
+	MyIntDel.BindUFunction(this, FName("SecondIntFunction"));
+
+	/*Calling the two bound functions of the delegate*/
+	MyIntDel.Execute(50);
+
+	/*Declaring of a delegate of MyIntMulticastDelegate type*/
+	MyIntMulticastDelegate Del;
+
+	/*Add three UFUNCTION to Del, this will not call the function just yet*/
+	Del.AddUFunction(this, FName("IntFunction"));
+	Del.AddUFunction(this, FName("SecondIntFunction"));
+	Del.AddUFunction(this, FName("ThirdIntFunction"));
+
+	/*Calling three bound functions of the delegate*/
+	Del.Broadcast(10);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
