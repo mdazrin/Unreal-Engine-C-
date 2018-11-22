@@ -1,0 +1,25 @@
+Create custom triggerbox from TriggerBox class
+
+TriggerBox.h
+Override BeginPlay() function
+
+Declare two functions, go-in and go-out
+
+	UFUNCTION()
+		void OnTriggerEnter(AActor* OverlapedActor, AActor* OtherActor);
+
+	UFUNCTION()
+		void OnTriggerExit(AActor* OverlapedActor, AActor* OtherActor);
+
+
+TriggerBox.cpp
+
+Register functions under BeginPlay()
+
+	OnActorBeginOverlap.AddDynamic(this, &AMyTriggerBox::OnTriggerEnter
+  
+	OnActorEndOverlap.AddDynamic(this, &AMyTriggerBox::OnTriggerExit);
+
+Outside BeginPlay(), write the function implementation
+
+Create Blueprint of the class, put in on the level
