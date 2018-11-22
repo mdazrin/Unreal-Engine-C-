@@ -1,0 +1,41 @@
+Create struct from Object class
+Delete the constructor
+Write new code
+
+.h
+USTRUCT()
+
+struct FMyObject :public FTableRowBase
+{
+	GENERATED_USTRUCT_BODY()
+
+		UPROPERTY()
+			int32 XpToLevel;
+
+		UPROPERTY()
+			float Health;
+
+
+};
+
+Go to desired class header
+
+Actor.h
+
+Include the struct header
+Create struct object
+FMyObject Stats;
+
+
+Actor.cpp
+Call the variables right after BeginPlay()
+
+.cpp
+void AMyActor::BeginPlay()
+{
+	Super::BeginPlay();
+	int32 x = Stats.XpToLevel;
+	
+}
+
+
