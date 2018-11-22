@@ -1,0 +1,37 @@
+There are two ways to do this in UE4
+1. Use OnHit function
+2. Use NotifyHit function
+
+.h file
+	/* OnHit function is called when FallingActor hits something */
+	UFUNCTION()
+		void OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
+
+	/* NotifyHit function is called when FallingActor gets hit by something */
+	UFUNCTION()
+		void NotifyHit(UPrimitiveComponent* MyActor, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
+
+.cpp file
+
+Register OnHit function under BeginPlay, NotifyHit no need
+
+	StaticMesh->OnComponentHit.AddDynamic(this, &AMyFallingActor::OnHit);
+  
+  
+  
+  
+  Outside BeginPlay constructor
+  
+  void AMyFallingActor::OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit)
+{
+	GLog->Log(*OtherActor->GetName());
+
+}
+
+void AMyFallingActor::NotifyHit(UPrimitiveComponent* MyComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit)
+{
+	GLog->Log(*OtherActor->GetName());
+
+}
+
+Create Blueprint of this class, put it on level and press Play
