@@ -1,0 +1,15 @@
+Create any class, example Actor
+
+Actor.h
+
+UFUNCTION(Exec, Category="Console Command)
+void MyFunction();
+
+Actor.cpp
+
+void AActor::MyFunction()
+{
+  GLog->Log("Show something")
+}
+
+Save and compile, press Play button, press '~' to execute console command in game
