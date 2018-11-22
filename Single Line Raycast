@@ -1,0 +1,12 @@
+Single Line Raycast needs few parameters
+
+1. Hit result
+2. Origin point
+3. Endpoint
+4. Collision Channel
+5. Collision parameters (needed to make simple collision)
+
+Actor.cpp
+After BeginPlay()
+
+ActorLineTraceSingle(1,2,3,4,5);
