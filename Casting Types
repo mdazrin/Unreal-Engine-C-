@@ -1,0 +1,16 @@
+Create a pointer in header file
+
+Actor.h
+AActor* SM
+
+Cast type under BeginPlay function
+Actor.cpp
+
+Super::BeginPlay();
+	AStaticMeshActor* StaticMesh = Cast<AStaticMeshActor>(SM);
+
+	if (StaticMesh)
+	{
+		GLog->Log("This is static mesh");
+	}
+
